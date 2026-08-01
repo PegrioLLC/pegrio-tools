@@ -3,146 +3,57 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Voiceover Script Calculator — Free Tool | Pegrio LLC</title>
-<meta name="description" content="Free tool: paste your script, instantly see word count, estimated voiceover time, and a recommended voice style. Then order a broadcast-quality AI voiceover for $45.">
+<title>Pegrio LLC — Free Creator Tools</title>
 <style>
-  :root{--bg:#0f1020;--card:#1a1b35;--accent:#6366f1;--pink:#ff5ea8;--green:#10b981;--text:#e7e9f5;--muted:#8b8fa8;--border:#2a2b4a;}
+  :root{--bg:#0f1020;--card:#1a1b35;--accent:#6366f1;--pink:#ff5ea8;--text:#e7e9f5;--muted:#8b8fa8;--border:#2a2b4a;}
   *{box-sizing:border-box;margin:0;padding:0}
-  body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;min-height:100vh}
-  .wrap{max-width:760px;margin:0 auto;padding:24px 20px 60px}
-  header{text-align:center;margin-bottom:32px}
-  header h1{font-size:28px;font-weight:800;background:linear-gradient(90deg,var(--accent),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:6px}
-  header p{color:var(--muted);font-size:15px}
-  .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:20px}
-  label{display:block;font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
-  textarea{width:100%;min-height:160px;background:var(--bg);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:14px;font-size:15px;font-family:inherit;resize:vertical}
-  textarea:focus{outline:none;border-color:var(--accent)}
-  .speed-row{display:flex;gap:12px;margin:16px 0;flex-wrap:wrap}
-  .speed-row label{flex:1}
-  select{background:var(--bg);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:10px 14px;font-size:14px;cursor:pointer}
-  .results{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:14px;margin-top:20px}
-  .stat{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;text-align:center}
-  .stat .v{font-size:26px;font-weight:800;color:var(--text);font-variant-numeric:tabular-nums}
-  .stat .v.accent{color:var(--accent)}
-  .stat .v.pink{color:var(--pink)}
-  .stat .v.green{color:var(--green)}
-  .stat .l{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-top:4px}
-  .rec{background:linear-gradient(135deg,rgba(99,102,241,.15),rgba(255,94,168,.1));border:1px solid var(--accent);border-radius:12px;padding:16px;margin-top:16px}
-  .rec .l{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--muted);margin-bottom:4px}
-  .rec .t{font-size:18px;font-weight:700}
-  .rec .d{font-size:14px;color:var(--muted);margin-top:2px}
-  .cta{text-align:center;background:linear-gradient(135deg,var(--accent),var(--pink));border-radius:16px;padding:28px;margin-top:24px}
-  .cta h2{font-size:20px;font-weight:800;margin-bottom:6px}
-  .cta p{font-size:14px;opacity:.95;margin-bottom:16px}
-  .cta a{display:inline-block;background:#fff;color:#1a1b35;font-weight:700;font-size:16px;padding:14px 32px;border-radius:50px;text-decoration:none;box-shadow:0 4px 20px rgba(0,0,0,.2);transition:transform .15s}
-  .cta a:hover{transform:translateY(-2px)}
+  body{font-family:-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+  .wrap{max-width:760px;margin:0 auto;padding:40px 20px}
+  header{text-align:center;margin-bottom:40px}
+  h1{font-size:32px;font-weight:800;background:linear-gradient(90deg,var(--accent),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;margin-bottom:8px}
+  header p{color:var(--muted);font-size:16px}
+  .tools{display:grid;gap:20px}
+  .tool{display:flex;gap:16px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;text-decoration:none;color:inherit;transition:transform .15s,border-color .15s}
+  .tool:hover{transform:translateY(-3px);border-color:var(--accent)}
+  .tool .emoji{font-size:36px;flex-shrink:0}
+  .tool h2{font-size:18px;font-weight:700;margin-bottom:4px}
+  .tool p{color:var(--muted);font-size:14px}
+  .cta{text-align:center;background:linear-gradient(135deg,var(--accent),var(--pink));border-radius:16px;padding:32px;margin:32px 0}
+  .cta h2{font-size:22px;margin-bottom:8px}
+  .cta p{font-size:15px;opacity:.95;margin-bottom:18px}
+  .cta a{display:inline-block;background:#fff;color:#1a1b35;font-weight:700;font-size:16px;padding:14px 32px;border-radius:50px;text-decoration:none}
   .cta .small{font-size:12px;opacity:.8;margin-top:10px}
-  footer{text-align:center;color:var(--muted);font-size:12px;margin-top:32px}
-  footer a{color:var(--accent);text-decoration:none}
-  .hidden{display:none}
+  footer{text-align:center;color:var(--muted);font-size:13px;margin-top:32px}
+  footer a{color:var(--accent)}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header>
-    <h1>🎙️ Voiceover Script Calculator</h1>
-    <p>Paste your script — instantly see word count, runtime, and the best voice style for it.</p>
+    <h1>🛠️ Pegrio LLC — Free Creator Tools</h1>
+    <p>Free tools for podcasters, creators, and businesses. No signup. No data collected.</p>
   </header>
-
-  <div class="card">
-    <label for="script">Your script</label>
-    <textarea id="script" placeholder="Paste your script here...&#10;&#10;Example: Welcome to our product demo. Today, I'll show you how our app saves you three hours every week..."></textarea>
-    <div class="speed-row">
-      <div style="flex:1">
-        <label for="speed">Speaking pace</label>
-        <select id="speed">
-          <option value="130">Slow &amp; dramatic (130 wpm)</option>
-          <option value="155" selected>Standard narration (155 wpm)</option>
-          <option value="175">Energetic / commercial (175 wpm)</option>
-          <option value="200">Fast / radio (200 wpm)</option>
-        </select>
-      </div>
-    </div>
+  <div class="tools">
+    <a class="tool" href="voiceover-calculator/">
+      <div class="emoji">🎙️</div>
+      <div><h2>Voiceover Script Calculator</h2><p>Paste a script — get word count, runtime, voice recommendation, and instant pricing.</p></div>
+    </a>
+    <a class="tool" href="podcast-intro-generator/">
+      <div class="emoji">🎧</div>
+      <div><h2>Podcast Intro Script Generator</h2><p>Pick a vibe, enter your show name — get a ready-to-record intro script instantly.</p></div>
+    </a>
+    <a class="tool" href="word-time-converter/">
+      <div class="emoji">⏱️</div>
+      <div><h2>Word to Time Converter</h2><p>Paste any text — see how long it takes to read, speak, or present. Perfect for planning.</p></div>
+    </a>
   </div>
-
-  <div class="card">
-    <div class="results" id="results">
-      <div class="stat"><div class="v accent" id="words">0</div><div class="l">Words</div></div>
-      <div class="stat"><div class="v pink" id="seconds">0s</div><div class="l">Est. Runtime</div></div>
-      <div class="stat"><div class="v green" id="cost">$45</div><div class="l">Our Voiceover</div></div>
-      <div class="stat"><div class="v" id="reads">0</div><div class="l">Read-throughs /hr</div></div>
-    </div>
-    <div class="rec hidden" id="recommendation">
-      <div class="l">Recommended voice style</div>
-      <div class="t" id="rec-title">—</div>
-      <div class="d" id="rec-desc">—</div>
-    </div>
-  </div>
-
   <div class="cta">
-    <h2>Need this voiced professionally?</h2>
-    <p>We produce broadcast-quality AI voiceovers — any voice, any language, 24-hour delivery.</p>
-    <a href="https://buy.stripe.com/aFa9AV2qzdCx6U57SL8g002" target="_blank" rel="noopener">Get your voiceover — $45 →</a>
-    <div class="small">Secure payment via Stripe · Pegrio LLC · Delivered in 24 hours</div>
+    <h2>Need broadcast-quality production?</h2>
+    <p>AI voiceovers, custom music, product videos — delivered in 24 hours.</p>
+    <a href="https://buy.stripe.com/aFa9AV2qzdCx6U57SL8g002" target="_blank" rel="noopener">Start a project — $45 →</a>
+    <div class="small">Secure payment via Stripe · Pegrio LLC</div>
   </div>
-
-  <footer>
-    <p>A free tool by <a href="https://github.com/PegrioLLC">Pegrio LLC</a> · No data leaves your browser</p>
-  </footer>
+  <footer><p>© 2026 Pegrio LLC · <a href="https://github.com/PegrioLLC">GitHub</a></p></footer>
 </div>
-
-<script>
-const scriptEl = document.getElementById('script');
-const speedEl = document.getElementById('speed');
-const wordsEl = document.getElementById('words');
-const secondsEl = document.getElementById('seconds');
-const costEl = document.getElementById('cost');
-const readsEl = document.getElementById('reads');
-const recBox = document.getElementById('recommendation');
-const recTitle = document.getElementById('rec-title');
-const recDesc = document.getElementById('rec-desc');
-
-function fmtTime(sec){
-  if(sec < 60) return Math.round(sec) + 's';
-  const m = Math.floor(sec/60), s = Math.round(sec%60);
-  return m + ':' + (s<10?'0':'') + s;
-}
-
-function calc(){
-  const text = scriptEl.value.trim();
-  const words = text ? text.split(/\s+/).filter(Boolean).length : 0;
-  const wpm = parseInt(speedEl.value, 10);
-  const sec = (words / wpm) * 60;
-  wordsEl.textContent = words.toLocaleString();
-  secondsEl.textContent = words ? fmtTime(sec) : '0s';
-  // pricing: up to 150w = $45, up to 500w = $110, else $250
-  let price = 45;
-  if (words > 500) price = 250;
-  else if (words > 150) price = 110;
-  costEl.textContent = words ? '$' + price : '$45';
-  readsEl.textContent = words ? Math.round(3600 / sec) : 0;
-
-  // recommendation
-  if (words === 0){
-    recBox.classList.add('hidden');
-    return;
-  }
-  recBox.classList.remove('hidden');
-  let style, desc;
-  if (sec < 30){ style = 'Energetic commercial voice'; desc = 'Short scripts benefit from a punchy, upbeat delivery that grabs attention fast.'; }
-  else if (sec < 120){ style = 'Warm, professional narrator'; desc = 'Mid-length scripts work best with a clear, friendly, trustworthy tone.'; }
-  else if (sec < 300){ style = 'Documentary / explainer narrator'; desc = 'Longer pieces need a steady, engaging voice that sustains attention.'; }
-  else { style = 'Audiobook / e-learning narrator'; desc = 'Extended content needs a measured, expressive voice that stays pleasant for long listens.'; }
-  // adjust by pace
-  if (wpm >= 175 && sec < 120) style = 'Fast-paced commercial / radio voice';
-  if (wpm <= 130) style = 'Slow, dramatic / cinematic voice';
-  recTitle.textContent = style;
-  recDesc.textContent = desc;
-}
-
-scriptEl.addEventListener('input', calc);
-speedEl.addEventListener('change', calc);
-calc();
-</script>
 </body>
 </html>
