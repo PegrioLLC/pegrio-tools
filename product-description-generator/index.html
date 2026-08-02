@@ -1,0 +1,703 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Product Description Generator — Bulk Descriptions for E-commerce | Pegrio LLC</title>
+<meta name="description" content="Generate high-converting product descriptions, bullet points, SEO meta tags, and more in seconds. First 3 free. Then $5/month unlimited.">
+<style>
+:root{
+  --bg:#0a0b1a;
+  --card:#13152b;
+  --card-2:#171935;
+  --accent:#6366f1;
+  --pink:#ff5ea8;
+  --gold:#fbbf24;
+  --green:#10b981;
+  --text:#e7e9f5;
+  --muted:#8b8fa8;
+  --border:#23254a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  line-height:1.6;
+  font-size:15px;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  overflow-x:hidden;
+}
+/* Ambient background glow */
+body::before{
+  content:'';
+  position:fixed;
+  top:-200px;left:50%;
+  transform:translateX(-50%);
+  width:900px;height:600px;
+  background:radial-gradient(ellipse at center, rgba(99,102,241,0.18), transparent 60%);
+  pointer-events:none;
+  z-index:0;
+}
+.wrap{max-width:920px;margin:0 auto;padding:28px 20px 60px;position:relative;z-index:1}
+
+/* Header */
+header{text-align:center;margin-bottom:28px}
+.price-badge{
+  display:inline-block;
+  background:linear-gradient(90deg,var(--accent),var(--pink));
+  color:#fff;
+  font-weight:800;font-size:11px;
+  padding:5px 14px;border-radius:20px;
+  margin-bottom:12px;letter-spacing:0.5px;
+}
+h1{
+  font-size:32px;font-weight:900;
+  background:linear-gradient(90deg,var(--accent),var(--pink));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  margin-bottom:6px;line-height:1.15;
+}
+header p{color:var(--muted);font-size:14px;max-width:560px;margin:0 auto}
+
+/* Usage counter */
+.usage-bar{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  background:var(--card);border:1px solid var(--border);
+  border-radius:50px;padding:8px 18px;
+  max-width:380px;margin:18px auto 0;font-size:13px;
+}
+.usage-bar .dot{width:8px;height:8px;border-radius:50%;background:var(--green);flex-shrink:0}
+.usage-bar .num{font-weight:800;color:var(--text)}
+.usage-bar .of{color:var(--muted)}
+.usage-bar .label{color:var(--muted)}
+
+/* Cards */
+.card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:24px;
+  margin-bottom:16px;
+}
+.card h2{font-size:15px;font-weight:700;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+
+label{
+  display:block;
+  font-size:11px;font-weight:700;
+  color:var(--muted);
+  text-transform:uppercase;letter-spacing:1.2px;
+  margin-bottom:7px;
+}
+input,textarea,select{
+  width:100%;
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  color:var(--text);
+  padding:13px 14px;
+  font:inherit;font-size:14px;
+  transition:border-color .15s, box-shadow .15s;
+}
+input::placeholder,textarea::placeholder{color:#5a5e7a}
+input:focus,textarea:focus,select:focus{
+  outline:none;
+  border-color:var(--accent);
+  box-shadow:0 0 0 3px rgba(99,102,241,0.15);
+}
+textarea{resize:vertical;min-height:80px}
+.field{margin-bottom:16px}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.tone-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+.tone-opt{
+  background:var(--bg);
+  border:1px solid var(--border);
+  border-radius:10px;
+  padding:11px 6px;
+  text-align:center;
+  cursor:pointer;
+  font-size:13px;font-weight:600;
+  color:var(--muted);
+  transition:all .15s;
+  user-select:none;
+}
+.tone-opt:hover{border-color:var(--accent);color:var(--text)}
+.tone-opt.active{
+  background:linear-gradient(135deg,rgba(99,102,241,0.2),rgba(255,94,168,0.15));
+  border-color:var(--accent);
+  color:var(--text);
+}
+
+/* Generate button */
+.btn{
+  width:100%;
+  background:linear-gradient(90deg,var(--accent),var(--pink));
+  color:#fff;border:none;border-radius:12px;
+  padding:16px;font-size:16px;font-weight:800;
+  cursor:pointer;margin-top:6px;
+  transition:transform .12s, box-shadow .15s, opacity .15s;
+  letter-spacing:0.3px;
+}
+.btn:hover{transform:translateY(-1px);box-shadow:0 10px 30px -8px rgba(99,102,241,0.5)}
+.btn:active{transform:translateY(0)}
+.btn:disabled{opacity:0.6;cursor:not-allowed;transform:none;box-shadow:none}
+
+/* Loading state */
+.spinner{
+  display:inline-block;width:15px;height:15px;
+  border:2px solid rgba(255,255,255,0.3);
+  border-top-color:#fff;
+  border-radius:50%;
+  animation:spin 0.7s linear infinite;
+  vertical-align:middle;margin-right:8px;
+}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Result cards */
+.result-section{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:18px 20px;
+  margin-bottom:14px;
+  animation:fadein .35s ease;
+}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+.result-head{
+  display:flex;align-items:center;justify-content:space-between;
+  margin-bottom:10px;gap:10px;
+}
+.result-head .title{
+  display:flex;align-items:center;gap:8px;
+  font-size:12px;font-weight:700;color:var(--muted);
+  text-transform:uppercase;letter-spacing:1.2px;
+}
+.result-head .title .ico{font-size:15px}
+.result-body{
+  font-size:14.5px;line-height:1.65;color:var(--text);
+  white-space:pre-wrap;word-wrap:break-word;
+}
+.result-body.bullets{padding-left:0;list-style:none}
+.result-body.bullets li{position:relative;padding-left:22px;margin-bottom:7px}
+.result-body.bullets li::before{
+  content:'▸';position:absolute;left:0;top:0;color:var(--accent);font-weight:800;
+}
+.tags-wrap{display:flex;flex-wrap:wrap;gap:8px}
+.tag-chip{
+  background:var(--bg);
+  border:1px solid var(--border);
+  color:var(--text);
+  padding:6px 12px;border-radius:50px;font-size:13px;font-weight:600;
+}
+.copy-btn{
+  background:var(--card-2);
+  border:1px solid var(--border);
+  color:var(--text);
+  padding:6px 12px;border-radius:8px;
+  font-size:12px;font-weight:700;cursor:pointer;
+  transition:all .15s;display:inline-flex;align-items:center;gap:5px;
+  flex-shrink:0;
+}
+.copy-btn:hover{border-color:var(--accent);color:#fff}
+.copy-btn.copied{background:var(--green);border-color:var(--green);color:#fff}
+
+/* Paywall */
+.paywall{
+  display:none;
+  text-align:center;
+  padding:34px 24px;
+  background:linear-gradient(135deg,var(--card),var(--card-2));
+  border:2px solid var(--gold);
+  border-radius:18px;
+  margin-top:18px;
+  position:relative;overflow:hidden;
+}
+.paywall::before{
+  content:'';position:absolute;inset:0;
+  background:radial-gradient(ellipse at top, rgba(251,191,36,0.12), transparent 60%);
+  pointer-events:none;
+}
+.paywall .lock{font-size:34px;margin-bottom:8px}
+.paywall h2{color:var(--gold);font-size:21px;margin-bottom:8px;font-weight:900}
+.paywall p{color:var(--muted);font-size:14px;margin-bottom:18px;max-width:480px;margin-left:auto;margin-right:auto}
+.checklist{text-align:left;display:inline-block;margin-bottom:18px}
+.checklist div{margin:4px 0;color:var(--green);font-size:13.5px}
+.pay-btn{
+  display:inline-block;
+  background:var(--gold);color:#1a1b35;
+  font-weight:900;font-size:16px;
+  padding:14px 36px;border-radius:50px;
+  text-decoration:none;
+  transition:transform .12s, box-shadow .15s;
+}
+.pay-btn:hover{transform:translateY(-2px);box-shadow:0 12px 30px -8px rgba(251,191,36,0.5)}
+.paywall .small{font-size:11.5px;color:var(--muted);margin-top:12px}
+
+/* Already paid: confirm */
+.paid-confirm{
+  display:none;text-align:center;
+  margin-top:14px;font-size:13px;color:var(--green);
+}
+.paid-confirm a{color:var(--accent);cursor:pointer;text-decoration:underline}
+
+/* History */
+.history{margin-top:18px}
+.history-item{
+  background:var(--bg);border:1px solid var(--border);
+  border-radius:10px;padding:12px 14px;margin-bottom:8px;
+  font-size:13px;cursor:pointer;transition:border-color .15s;
+}
+.history-item:hover{border-color:var(--accent)}
+.history-item .h-name{font-weight:700;color:var(--text)}
+.history-item .h-meta{color:var(--muted);font-size:12px;margin-top:2px}
+.empty-state{
+  text-align:center;color:var(--muted);font-size:13px;padding:18px;
+}
+
+/* Footer */
+footer{
+  text-align:center;color:var(--muted);font-size:12px;
+  margin-top:36px;padding-top:20px;border-top:1px solid var(--border);
+}
+footer a{color:var(--accent)}
+
+/* Mobile */
+@media(max-width:640px){
+  .wrap{padding:20px 14px 50px}
+  h1{font-size:25px}
+  .card{padding:18px}
+  .row{grid-template-columns:1fr}
+  .tone-grid{grid-template-columns:repeat(2,1fr)}
+  .result-head{flex-direction:row;align-items:center}
+  .result-head .title{flex:1;min-width:0}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="price-badge">3 FREE · THEN $5/MONTH</div>
+    <h1>AI Product Description Generator</h1>
+    <p>Turn a product name into a ready-to-publish description, bullet points, SEO meta, and tags. Built for high-volume sellers.</p>
+    <div class="usage-bar" id="usageBar">
+      <span class="dot" id="usageDot"></span>
+      <span class="label">Free uses:</span>
+      <span><span class="num" id="usageNum">0</span><span class="of"> / 3 used</span></span>
+    </div>
+  </header>
+
+  <!-- Input card -->
+  <div class="card">
+    <div class="field">
+      <label>Product Name</label>
+      <input type="text" id="productName" placeholder="e.g. Bamboo Fiber Travel Mug 16oz">
+    </div>
+    <div class="field">
+      <label>Key Features (comma separated)</label>
+      <textarea id="features" placeholder="e.g. double-wall insulation, leak-proof lid, BPA-free, keeps drinks hot 6 hours">Eco-friendly bamboo exterior, vacuum insulated stainless steel, 16oz capacity, leak-proof flip lid, keeps hot for 8 hours, fits standard cup holder</textarea>
+    </div>
+    <div class="field">
+      <label>Tone</label>
+      <div class="tone-grid" id="toneGrid">
+        <div class="tone-opt active" data-tone="professional">Professional</div>
+        <div class="tone-opt" data-tone="casual">Casual</div>
+        <div class="tone-opt" data-tone="luxury">Luxury</div>
+        <div class="tone-opt" data-tone="fun">Fun</div>
+      </div>
+    </div>
+    <button class="btn" id="genBtn" onclick="generate()">⚡ Generate Description</button>
+  </div>
+
+  <!-- Results -->
+  <div id="results"></div>
+
+  <!-- Paywall -->
+  <div class="paywall" id="paywall">
+    <div class="lock">🔓</div>
+    <h2>You've Used Your 3 Free Descriptions</h2>
+    <p>Upgrade for unlimited generations. No caps, no per-description fees. Cancel anytime.</p>
+    <div class="checklist">
+      <div>✓ Unlimited product descriptions</div>
+      <div>✓ All tones (professional, casual, luxury, fun)</div>
+      <div>✓ Full SEO meta + tags every time</div>
+      <div>✓ Copy-to-clipboard for every section</div>
+    </div>
+    <a href="https://buy.stripe.com/eVq4gBghp9mh6U5c918g003" target="_blank" rel="noopener" class="pay-btn">Unlock Unlimited — $5/month →</a>
+    <div class="small">Secure checkout by Stripe · Cancel anytime · Instant access</div>
+    <div class="paid-confirm" id="paidConfirm">
+      Already subscribed? <a id="activateLink">Click here to activate</a>
+    </div>
+  </div>
+
+  <!-- History -->
+  <div class="card history" id="historyCard" style="display:none">
+    <h2>🕘 Recent Generations</h2>
+    <div id="historyList"></div>
+  </div>
+
+  <footer>
+    <p>Pegrio LLC · <a href="../">All tools</a></p>
+    <p style="margin-top:4px;opacity:.7">Descriptions generated by AI. Review before publishing.</p>
+  </footer>
+</div>
+
+<script>
+const API_KEY = '64a3b09c6b274dc29d0696a0d1aeeb3c.lYvJ1Ecga0KH5RZi';
+
+const FREE_LIMIT = 3;
+const STORAGE_COUNT = 'pdg_count';
+const STORAGE_PAID = 'pdg_paid';
+const STORAGE_HISTORY = 'pdg_history';
+const STRIPE_URL = 'https://buy.stripe.com/eVq4gBghp9mh6U5c918g003';
+
+let selectedTone = 'professional';
+
+/* ---------- Tone selector ---------- */
+document.getElementById('toneGrid').addEventListener('click', function(e){
+  const opt = e.target.closest('.tone-opt');
+  if(!opt) return;
+  document.querySelectorAll('.tone-opt').forEach(o => o.classList.remove('active'));
+  opt.classList.add('active');
+  selectedTone = opt.dataset.tone;
+});
+
+/* ---------- Usage / paywall state ---------- */
+function getCount(){ return parseInt(localStorage.getItem(STORAGE_COUNT) || '0', 10); }
+function isPaid(){ return localStorage.getItem(STORAGE_PAID) === '1'; }
+function bumpCount(){
+  const n = getCount() + 1;
+  localStorage.setItem(STORAGE_COUNT, String(n));
+  renderUsage();
+  return n;
+}
+function renderUsage(){
+  const n = getCount();
+  const paid = isPaid();
+  const num = document.getElementById('usageNum');
+  const dot = document.getElementById('usageDot');
+  const of = document.querySelector('.usage-bar .of');
+  num.textContent = paid ? '∞' : Math.min(n, FREE_LIMIT);
+  of.textContent = paid ? ' / unlimited' : ' / 3 used';
+  if(paid){
+    dot.style.background = 'var(--gold)';
+  } else if(n >= FREE_LIMIT){
+    dot.style.background = 'var(--pink)';
+  } else {
+    dot.style.background = 'var(--green)';
+  }
+}
+
+function showPaywall(){
+  document.getElementById('paywall').style.display = 'block';
+  document.getElementById('paywall').scrollIntoView({behavior:'smooth', block:'center'});
+}
+
+/* Activation link for returning paid users */
+document.getElementById('activateLink').addEventListener('click', function(e){
+  e.preventDefault();
+  localStorage.setItem(STORAGE_PAID, '1');
+  document.getElementById('paywall').style.display = 'none';
+  renderUsage();
+  generate();
+});
+
+/* ---------- Copy helper ---------- */
+function copyText(text, btn){
+  if(navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(() => flashCopied(btn)).catch(() => fallbackCopy(text, btn));
+  } else {
+    fallbackCopy(text, btn);
+  }
+}
+function fallbackCopy(text, btn){
+  const ta = document.createElement('textarea');
+  ta.value = text; ta.style.position='fixed'; ta.style.left='-9999px';
+  document.body.appendChild(ta); ta.select();
+  try { document.execCommand('copy'); flashCopied(btn); } catch(e){}
+  document.body.removeChild(ta);
+}
+function flashCopied(btn){
+  const original = btn.innerHTML;
+  btn.classList.add('copied');
+  btn.innerHTML = '✓ Copied';
+  setTimeout(() => { btn.classList.remove('copied'); btn.innerHTML = original; }, 1400);
+}
+
+/* ---------- Main generation ---------- */
+async function generate(){
+  const name = document.getElementById('productName').value.trim();
+  const features = document.getElementById('features').value.trim();
+
+  if(!name){
+    alert('Please enter a product name.');
+    document.getElementById('productName').focus();
+    return;
+  }
+
+  // Paywall check
+  if(!isPaid() && getCount() >= FREE_LIMIT){
+    showPaywall();
+    return;
+  }
+
+  const btn = document.getElementById('genBtn');
+  btn.disabled = true;
+  btn.innerHTML = '<span class="spinner"></span>Generating...';
+
+  // Build prompt
+  const toneMap = {
+    professional: 'professional, clear, and trustworthy',
+    casual: 'casual, friendly, and conversational',
+    luxury: 'premium, sophisticated, and aspirational',
+    fun: 'fun, energetic, and playful'
+  };
+  const toneDesc = toneMap[selectedTone] || toneMap.professional;
+  const featureLine = features
+    ? `Key features to highlight: ${features}.`
+    : 'Infer plausible features from the product name.';
+
+  const prompt =
+`You are an expert e-commerce copywriter. Write product listing copy for the following product.
+
+Product: ${name}
+${featureLine}
+Tone: ${toneDesc}
+
+Return STRICT JSON with EXACTLY these keys and nothing else (no markdown, no code fences):
+{
+  "description": "A full product description, 150-200 words, written to convert. Paragraph form.",
+  "bullets": ["feature bullet 1", "feature bullet 2", "feature bullet 3", "feature bullet 4", "feature bullet 5"],
+  "meta": "An SEO meta description, max 155 characters, compelling, includes the product name.",
+  "tags": ["tag1", "tag2", "tag3", "tag4", "tag5"]
+}
+
+Rules:
+- description MUST be 150-200 words.
+- bullets: exactly 5 short, benefit-driven bullets.
+- meta: at most 155 characters, no quotes inside.
+- tags: exactly 5 lowercase search tags, no # symbol.
+- Output ONLY the JSON object.`;
+
+  try {
+    const result = await callApi(prompt);
+    const parsed = parseResult(result);
+    renderResults(parsed, {name, tone: selectedTone});
+    if(!isPaid()){
+      bumpCount();
+    }
+  } catch(err){
+    renderError(err);
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '⚡ Generate Description';
+  }
+}
+
+/* ---------- API call ---------- */
+async function callApi(prompt){
+  if(!API_KEY || API_KEY === '64a3b09c6b274dc29d0696a0d1aeeb3c.lYvJ1Ecga0KH5RZi'){
+    throw new Error('NO_API_KEY');
+  }
+  const response = await fetch('https://open.bigmodel.cn/api/coding/paas/v4/chat/completions', {
+    method: 'POST',
+    headers: {
+      'Authorization': 'Bearer ' + API_KEY,
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      model: 'glm-4.6',
+      messages: [{ role: 'user', content: prompt }],
+      max_tokens: 2000,
+      temperature: 0.8
+    })
+  });
+  if(!response.ok){
+    let detail = '';
+    try { detail = (await response.json()).error?.message || ''; } catch(e){}
+    throw new Error('API_ERROR:' + response.status + (detail ? (': ' + detail) : ''));
+  }
+  const data = await response.json();
+  const content = data.choices[0].message.content;
+  if(!content) throw new Error('EMPTY_RESPONSE');
+  return content;
+}
+
+/* ---------- Parse LLM JSON (tolerant) ---------- */
+function parseResult(content){
+  // Strip markdown code fences if present
+  let s = content.trim();
+  s = s.replace(/^```(?:json)?/i, '').replace(/```$/, '').trim();
+  // Extract first {...} block
+  const start = s.indexOf('{');
+  const end = s.lastIndexOf('}');
+  if(start !== -1 && end !== -1 && end > start){
+    s = s.slice(start, end + 1);
+  }
+  let obj;
+  try {
+    obj = JSON.parse(s);
+  } catch(e){
+    throw new Error('PARSE_ERROR');
+  }
+  // Normalize
+  const bullets = Array.isArray(obj.bullets) ? obj.bullets.map(b => String(b)) : [];
+  const tags = Array.isArray(obj.tags) ? obj.tags.map(t => String(t).replace(/^#/, '').toLowerCase()) : [];
+  return {
+    description: String(obj.description || '').trim(),
+    bullets,
+    meta: String(obj.meta || '').trim(),
+    tags
+  };
+}
+
+/* ---------- Render results ---------- */
+function renderResults(r, meta){
+  const container = document.getElementById('results');
+  container.innerHTML = '';
+
+  if(r.description){
+    container.appendChild(sectionCard('desc', '📝 Full Description', r.description, r.description));
+  }
+  if(r.bullets && r.bullets.length){
+    const html = '<ul class="result-body bullets">' + r.bullets.map(b => '<li>' + escapeHtml(b) + '</li>').join('') + '</ul>';
+    const copyStr = r.bullets.map((b,i) => (i+1) + '. ' + b).join('\n');
+    container.appendChild(sectionCardHtml('bullets', '✨ Key Features', html, copyStr));
+  }
+  if(r.meta){
+    container.appendChild(sectionCard('meta', '🔍 SEO Meta Description', escapeHtml(r.meta) + '<span style="color:var(--muted);font-size:12px;margin-left:8px">(' + r.meta.length + ' chars)</span>', r.meta));
+  }
+  if(r.tags && r.tags.length){
+    const chipsHtml = '<div class="tags-wrap">' + r.tags.map(t => '<span class="tag-chip">#' + escapeHtml(t) + '</span>').join('') + '</div>';
+    const copyStr = r.tags.map(t => '#' + t).join(' ');
+    container.appendChild(sectionCardHtml('tags', '🏷️ Tags', chipsHtml, copyStr));
+  }
+
+  // Save to history (defensive — never let storage/DOM errors wipe results)
+  try { saveHistory(meta, r); } catch(e){ /* ignore */ }
+
+  // Scroll to results
+  try {
+    const first = container.firstElementChild;
+    if(first) first.scrollIntoView({behavior:'smooth', block:'start'});
+  } catch(e){ /* ignore */ }
+}
+
+function sectionCard(id, title, bodyHtml, copyText){
+  const card = document.createElement('div');
+  card.className = 'result-section';
+  card.innerHTML =
+    '<div class="result-head">' +
+      '<div class="title"><span class="ico">' + iconFor(title) + '</span>' + stripIcon(title) + '</div>' +
+      '<button class="copy-btn" id="copy-' + id + '">📋 Copy</button>' +
+    '</div>' +
+    '<div class="result-body">' + bodyHtml + '</div>';
+  setTimeout(() => {
+    const btn = card.querySelector('#copy-' + id);
+    if(btn) btn.addEventListener('click', () => copyText(copyText, btn));
+  }, 0);
+  return card;
+}
+
+function sectionCardHtml(id, title, bodyHtml, copyText){
+  return sectionCard(id, title, bodyHtml, copyText);
+}
+
+function iconFor(title){
+  const m = title.match(/^(\S+)/);
+  return m ? m[1] : '';
+}
+function stripIcon(title){
+  return title.replace(/^\S+\s+/, '');
+}
+
+function escapeHtml(str){
+  return String(str)
+    .replace(/&/g,'&amp;')
+    .replace(/</g,'&lt;')
+    .replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;');
+}
+
+/* ---------- Error handling ---------- */
+function renderError(err){
+  const container = document.getElementById('results');
+  const msg = String(err && err.message ? err.message : err);
+  let title, body;
+  if(msg === 'NO_API_KEY'){
+    title = 'API key not configured';
+    body = 'This tool needs a z.ai API key to generate descriptions. The placeholder <code>API_KEY</code> has not been replaced yet at deploy. Once the key is injected, generation will work.';
+  } else if(msg.startsWith('API_ERROR')){
+    title = 'Generation failed';
+    body = 'The API returned an error: ' + escapeHtml(msg.replace('API_ERROR:', '')) + '<br><br>If this keeps happening, try again in a moment.';
+  } else if(msg === 'PARSE_ERROR'){
+    title = 'Could not parse response';
+    body = 'The model returned content we could not read. Please try generating again.';
+  } else {
+    title = 'Something went wrong';
+    body = escapeHtml(msg) + '<br><br>Please check your connection and try again.';
+  }
+  container.innerHTML =
+    '<div class="result-section" style="border-color:var(--pink)">' +
+      '<div class="result-head"><div class="title" style="color:var(--pink)">⚠ ' + title + '</div></div>' +
+      '<div class="result-body" style="color:var(--muted);font-size:13.5px">' + body + '</div>' +
+    '</div>';
+}
+
+/* ---------- History ---------- */
+function getHistory(){
+  try { return JSON.parse(localStorage.getItem(STORAGE_HISTORY) || '[]'); }
+  catch(e){ return []; }
+}
+function saveHistory(meta, r){
+  const list = getHistory();
+  list.unshift({
+    name: meta.name,
+    tone: meta.tone,
+    description: r.description,
+    bullets: r.bullets,
+    meta_desc: r.meta,
+    tags: r.tags,
+    ts: Date.now()
+  });
+  // cap at 12
+  localStorage.setItem(STORAGE_HISTORY, JSON.stringify(list.slice(0, 12)));
+  renderHistory();
+}
+function renderHistory(){
+  const list = getHistory();
+  const card = document.getElementById('historyCard');
+  const box = document.getElementById('historyList');
+  if(!list.length){
+    card.style.display = 'none';
+    return;
+  }
+  card.style.display = 'block';
+  box.innerHTML = list.map((h, i) =>
+    '<div class="history-item" data-i="' + i + '">' +
+      '<div class="h-name">' + escapeHtml(h.name) + ' <span style="color:var(--muted);font-weight:400">· ' + escapeHtml(h.tone) + '</span></div>' +
+      '<div class="h-meta">' + (h.description ? escapeHtml(h.description.slice(0, 90)) + '...' : 'No description') + '</div>' +
+    '</div>'
+  ).join('');
+  box.querySelectorAll('.history-item').forEach(el => {
+    el.addEventListener('click', () => {
+      const i = parseInt(el.dataset.i, 10);
+      const h = list[i];
+      if(!h) return;
+      renderResults({
+        description: h.description,
+        bullets: h.bullets || [],
+        meta: h.meta_desc || '',
+        tags: h.tags || []
+      }, {name: h.name, tone: h.tone});
+    });
+  });
+}
+
+/* ---------- Init ---------- */
+renderUsage();
+renderHistory();
+</script>
+</body>
+</html>
