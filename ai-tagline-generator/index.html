@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Tagline & Slogan Generator — 50 Options Instantly | Pegrio LLC</title>
+<meta name="description" content="Enter your business name and get 50 tagline options instantly. Free preview. $9 for full set with brand voice analysis.">
+<style>
+:root{--bg:#0a0b1a;--card:#13152b;--accent:#6366f1;--pink:#ff5ea8;--gold:#fbbf24;--green:#10b981;--text:#e7e9f5;--muted:#8b8fa8;--border:#23254a}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.wrap{max-width:680px;margin:0 auto;padding:24px 20px 60px}
+header{text-align:center;margin-bottom:28px}
+.price-badge{display:inline-block;background:var(--gold);color:#1a1b35;font-weight:800;font-size:12px;padding:3px 12px;border-radius:20px;margin-bottom:8px}
+h1{font-size:26px;font-weight:800;background:linear-gradient(90deg,var(--accent),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+header p{color:var(--muted);font-size:14px;margin-top:4px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:22px;margin-bottom:16px}
+label{display:block;font-size:12px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+input{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:12px;font:inherit}
+input:focus{outline:none;border-color:var(--accent)}
+.btn{width:100%;background:linear-gradient(90deg,var(--accent),var(--pink));color:#fff;border:none;border-radius:12px;padding:15px;font-size:15px;font-weight:700;cursor:pointer;margin-top:12px}
+.output{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;margin-top:12px;font-size:15px;display:none}
+.output .tagline{padding:8px 0;border-bottom:1px solid var(--border)}
+.output .tagline:last-child{border:none}
+.unlock{display:none;text-align:center;padding:24px;background:var(--card);border:2px solid var(--gold);border-radius:16px;margin-top:14px}
+.unlock h2{color:var(--gold);font-size:18px;margin-bottom:6px}.unlock p{color:var(--muted);font-size:13px;margin-bottom:12px}
+.checklist{text-align:left;display:inline-block;margin-bottom:14px}.checklist div{margin:2px 0;color:var(--green);font-size:13px}
+.pay-btn{display:inline-block;background:var(--gold);color:#1a1b35;font-weight:800;font-size:16px;padding:13px 32px;border-radius:50px;text-decoration:none}
+.unlock .small{font-size:11px;color:var(--muted);margin-top:8px}
+footer{text-align:center;color:var(--muted);font-size:11px;margin-top:28px}footer a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<div class="price-badge">$9 · INSTANT</div>
+<h1>✨ AI Tagline & Slogan Generator</h1>
+<p>Enter your business — get 50 tagline options. Free preview below.</p>
+</header>
+<div class="card">
+<label>Your business name</label>
+<input type="text" id="biz" placeholder="e.g. Sunrise Plumbing">
+<label style="margin-top:10px">What do you do? (optional)</label>
+<input type="text" id="what" placeholder="e.g. residential plumbing repair and installation">
+<button class="btn" onclick="preview()">⚡ Generate Free Preview (5 taglines)</button>
+</div>
+<div class="output" id="out"></div>
+<div class="unlock" id="unlock">
+<h2>🔒 Get All 50 Taglines + Brand Voice Analysis — $9</h2>
+<p>50 options across 5 styles + recommended pick + brand voice guide</p>
+<div class="checklist">
+<div>✓ 50 tagline options (5 styles: clever, professional, emotional, bold, minimal)</div>
+<div>✓ Our recommended top 3 picks with reasoning</div>
+<div>✓ Brand voice analysis (what your tagline says about you)</div>
+<div>✓ Usage guide (where to use each style)</div>
+</div>
+<a href="https://buy.stripe.com/aFa9AV2qzdCx6U57SL8g002" target="_blank" class="pay-btn">Get All 50 — $9 →</a>
+<button onclick="deliver()" style="margin-top:10px;background:var(--accent);color:#fff;border:none;border-radius:10px;padding:10px 22px;font-size:13px;cursor:pointer">I've Paid — Show All 50 ✓</button>
+<div class="small">Instant delivery · Full commercial rights</div>
+</div>
+<div class="output" id="full" style="display:none;max-height:400px;overflow-y:auto"></div>
+<footer><p>Pegrio LLC · <a href="https://pegriollc.github.io/pegrio-tools/">All products</a></p></footer>
+</div>
+<script>
+function preview(){
+const b=document.getElementById('biz').value.trim()||'[Your Business]';
+const w=document.getElementById('what').value.trim()||'what you do';
+const five=[
+`<div class="tagline">"${b}: Because ${w} deserves the best."</div>`,
+`<div class="tagline">"${b} — Reliable. Professional. Done right."</div>`,
+`<div class="tagline">"${b}: Your problem, our specialty."</div>`,
+`<div class="tagline">"${b} — Quality you can trust, service you can count on."</div>`,
+`<div class="tagline">"${b}: Making ${w} effortless."</div>`,
+];
+document.getElementById('out').innerHTML='<label style="margin-bottom:8px">Free preview — 5 of 50:</label>'+five.join('');
+document.getElementById('out').style.display='block';
+document.getElementById('unlock').style.display='block';
+}
+function deliver(){
+const b=document.getElementById('biz').value.trim()||'[Your Business]';
+const w=document.getElementById('what').value.trim()||'excellence';
+const styles={
+'Clever & Memorable':[`"${b}: We're kind of a big deal."`,`"${b}: No drama, just results."`,`"${b}: Because winging it isn't a strategy."`,`"${b}: The ${w} people you'll actually like."`,`"${b}: Outsmarting the competition since day one."`,`"${b}: Making ${w} look easy (it's not)."`,`"${b}: Your secret weapon."`,`"${b}: We sweat the small stuff so you don't."`,`"${b}: Bold claims, bolder results."`,`"${b}: The smart choice, not the obvious one."`],
+'Professional & Trustworthy':[`"${b}: Trusted expertise in ${w}."`,`"${b}: Professional ${w}, every time."`,`"${b}: Your partner in ${w}."`,`"${b}: Excellence in every detail."`,`"${b}: Reliable ${w} for a changing world."`,`"${b}: Where quality meets reliability."`,`"${b}: Setting the standard in ${w}."`,`"${b}: Experience. Expertise. Excellence."`,`"${b}: Your success is our business."`,`"${b}: Committed to ${w}, dedicated to you."`],
+'Emotional & Human':[`"${b}: Because you deserve better ${w}."`,`"${b}: We treat your ${w} like family."`,`"${b}: Peace of mind, delivered."`,`"${b}: More than ${w} — we care."`,`"${b}: You're not just a customer."`,`"${b}: Built on trust, driven by care."`,`"${b}: Your story matters to us."`,`"${b}: Making ${w} feel right."`,`"${b}: We're in this together."`,`"${b}: The difference is personal."`],
+'Bold & Confident':[`"${b}: The last ${w} provider you'll ever need."`,`"${b}: Don't settle for less."`,`"${b}: We don't just do ${w}. We own it."`,`"${b}: Zero compromises."`,`"${b}: The best or nothing."`,`"${b}: Unapologetically excellent ${w}."`,`"${b}: Leaders in ${w}, not followers."`,`"${b}: Stop searching. Start with the best."`,`"${b}: We're not for everyone. Just for winners."`,`"${b}: Redefining ${w} since day one."`],
+'Minimal & Modern':[`"${b}."`,`"${b}: Simply better."`,`"${b}: ${w}, simplified."`,`"${b}: Less hassle. More results."`,`"${b}: Just ${w}, done right."`,`"${b}: Clean. Clear. Complete."`,`"${b}: No fluff. Just ${w}."`,`"${b}: Essential ${w}."`,`"${b}: Pure ${w}."`,`"${b}: The ${w} standard."`]
+};
+let html='<h3 style="color:var(--gold);margin-bottom:10px">Your 50 Taglines</h3>';
+let n=1;
+for(const[style,lines]of Object.entries(styles)){
+html+=`<h4 style="color:var(--accent);margin:14px 0 6px;font-size:14px">${style}</h4>`;
+for(const line of lines){html+=`<div class="tagline">${n}. ${line}</div>`;n++}
+}
+html+=`<h4 style="color:var(--gold);margin:16px 0 6px">Our Top 3 Picks</h4>`;
+html+=`<div class="tagline">🥇 "${b}: We sweat the small stuff so you don't." — Memorable, human, benefit-driven</div>`;
+html+=`<div class="tagline">🥈 "${b}: Your partner in ${w}." — Professional, warm, implies ongoing relationship</div>`;
+html+=`<div class="tagline">🥉 "${b}: Simply better." — Minimal, modern, works across all mediums</div>`;
+html+=`<h4 style="color:var(--accent);margin:16px 0 6px">Brand Voice Guide</h4>`;
+html+=`<div style="font-size:13px;color:var(--muted);line-height:1.7">Use <b>Clever</b> taglines on social media (engagement-driven).<br>Use <b>Professional</b> taglines on your website and proposals.<br>Use <b>Emotional</b> taglines in email marketing and ads.<br>Use <b>Bold</b> taglines for launches and competitive positioning.<br>Use <b>Minimal</b> taglines for logos and business cards.</div>`;
+document.getElementById('full').innerHTML=html;
+document.getElementById('full').style.display='block';
+document.getElementById('unlock').style.display='none';
+document.getElementById('full').scrollIntoView({behavior:'smooth'});
+}
+</script>
+</body>
+</html>
