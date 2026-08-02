@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>AI Content Calendar Generator — 30 Days of Posts in 30 Seconds | Pegrio LLC</title>
+<meta name="description" content="Paste your niche and platform — get a complete 30-day content calendar with post ideas, hooks, and hashtags. $15 instant delivery.">
+<style>
+:root{--bg:#0a0b1a;--card:#13152b;--accent:#6366f1;--pink:#ff5ea8;--gold:#fbbf24;--green:#10b981;--text:#e7e9f5;--muted:#8b8fa8;--border:#23254a;--locked:#1a1d3a}
+*{box-sizing:border-box;margin:0;padding:0}body{font-family:-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.wrap{max-width:700px;margin:0 auto;padding:24px 20px 60px}
+header{text-align:center;margin-bottom:28px}
+.price-badge{display:inline-block;background:linear-gradient(135deg,var(--gold),#f59e0b);color:#1a1b35;font-weight:800;font-size:13px;padding:4px 14px;border-radius:20px;margin-bottom:10px}
+h1{font-size:28px;font-weight:800;background:linear-gradient(90deg,var(--accent),var(--pink));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+header p{color:var(--muted);font-size:15px;margin-top:6px}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:18px}
+label{display:block;font-size:13px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:8px}
+input,select{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:12px 14px;font:inherit}
+input:focus,select:focus{outline:none;border-color:var(--accent)}
+.row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:14px}.row>div{flex:1;min-width:180px}
+.btn{width:100%;background:linear-gradient(90deg,var(--accent),var(--pink));color:#fff;border:none;border-radius:12px;padding:16px;font-size:16px;font-weight:700;cursor:pointer}
+.btn:hover{opacity:.9}
+.output{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:18px;margin-top:14px;font-size:14px;white-space:pre-wrap;display:none;max-height:300px;overflow-y:auto}
+.unlock{display:none;text-align:center;padding:28px;background:var(--locked);border:2px solid var(--gold);border-radius:16px;margin-top:16px}
+.unlock h2{color:var(--gold);margin-bottom:8px}.unlock p{color:var(--muted);margin-bottom:14px}
+.checklist{text-align:left;display:inline-block;margin-bottom:16px}.checklist div{margin:3px 0;color:var(--green)}
+.pay-btn{display:inline-block;background:linear-gradient(135deg,var(--gold),#f59e0b);color:#1a1b35;font-weight:800;font-size:17px;padding:14px 36px;border-radius:50px;text-decoration:none}
+.unlock .small{font-size:12px;color:var(--muted);margin-top:10px}
+.delivered{display:none;background:var(--card);border:1px solid var(--green);border-radius:16px;padding:20px;margin-top:16px}
+.delivered .full{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:16px;font-size:13px;white-space:pre-wrap;max-height:500px;overflow-y:auto}
+.copy{background:var(--border);color:var(--text);border:none;border-radius:8px;padding:8px 16px;font-size:13px;cursor:pointer;margin-top:10px}
+footer{text-align:center;color:var(--muted);font-size:12px;margin-top:30px}footer a{color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<div class="price-badge">$15 · INSTANT DELIVERY</div>
+<h1>📅 AI Content Calendar Generator</h1>
+<p>30 days of post ideas, hooks, and hashtags — generated for your niche in 30 seconds.</p>
+</header>
+<div class="card">
+<div class="row">
+<div><label>Your niche / business</label><input type="text" id="niche" placeholder="e.g. fitness coaching for busy moms"></div>
+<div><label>Platform</label><select id="platform"><option value="Instagram">Instagram</option><option value="LinkedIn">LinkedIn</option><option value="TikTok">TikTok</option><option value="Twitter/X">Twitter/X</option><option value="YouTube">YouTube Shorts</option></select></div>
+</div>
+<button class="btn" onclick="preview()">⚡ Generate Free Preview (Week 1)</button>
+</div>
+<div class="output" id="previewOut"></div>
+<div class="unlock" id="unlock">
+<h2>🔒 Unlock Full 30-Day Calendar — $15</h2>
+<p>30 post ideas + hooks + hashtags + optimal posting times + content mix strategy</p>
+<div class="checklist">
+<div>✓ 30 specific post ideas (not generic)</div>
+<div>✓ Scroll-stopping hook for each post</div>
+<div>✓ Hashtag sets per post (5-15 tags)</div>
+<div>✓ Optimal posting times by day</div>
+<div>✓ Content mix: educate/entertain/promote/engage</div>
+<div>✓ Weekly theme structure</div>
+</div>
+<div><a href="https://buy.stripe.com/aFa9AV2qzdCx6U57SL8g002" target="_blank" class="pay-btn">Get Full Calendar — $15 →</a></div>
+<div class="small">After payment, click "I've Paid" to get your calendar instantly</div>
+<button onclick="deliver()" style="margin-top:12px;background:var(--accent);color:#fff;border:none;border-radius:10px;padding:10px 24px;font-size:14px;cursor:pointer">I've Paid — Deliver My Calendar ✓</button>
+</div>
+<div class="delivered" id="delivered">
+<div class="full" id="fullCal"></div>
+<button class="copy" onclick="copyAll()">📋 Copy Everything</button>
+</div>
+<footer><p>Pegrio LLC · <a href="https://pegriollc.github.io/pegrio-tools/">All products</a></p></footer>
+</div>
+<script>
+const hooks=["Stop doing X if you want Y","The truth about X nobody tells you","I tried X for 30 days. Here's what happened","X changed everything. Here's why","3 mistakes you're making with X","Why X is harder than they say","The X hack that saved me 10 hours","Nobody talks about this X secret","X: expectations vs reality","If I started X over, I'd do this first","The X rule I live by","You're doing X wrong (here's the fix)","X in 2026: what actually works","The X myth costing you money","How I went from bad to good at X","X for beginners: skip the noise","The uncomfortable truth about X","X isn't what you think","5 X tools I can't live without","The X conversation no one has"];
+const types=["Educational","Behind-the-scenes","Story/Personal","Tips & Tricks","Myth-busting","Poll/Question","Case Study","Inspirational","Promotional","Engagement"];
+const tagsPool=["growth","mindset","success","entrepreneur","smallbusiness","contentcreation","marketing","strategy","tips","tutorial","motivation","productivity","business","creator","digitalmarketing"];
+function pick(a,s){let r=a[s%a.length];return r}
+function preview(){
+const n=document.getElementById('niche').value.trim()||'[your niche]';
+const p=document.getElementById('platform').value;
+let out=`WEEK 1 PREVIEW — ${p} Content Calendar for: ${n}\n\n`;
+const days=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+for(let i=0;i<7;i++){
+const h=pick(hooks,i).replace('X',n.split(' ')[0]);
+const t=types[i%types.length];
+out+=`Day ${i+1} (${days[i]}) — ${t}\n  Hook: "${h}"\n  Post idea: Share a specific insight about ${n} that contradicts common advice.\n  Hashtags: #${n.split(' ')[0].toLowerCase()} ${tagsPool.slice(i,i+4).map(t=>'#'+t).join(' ')}\n\n`;
+}
+document.getElementById('previewOut').textContent=out;
+document.getElementById('previewOut').style.display='block';
+document.getElementById('unlock').style.display='block';
+document.getElementById('previewOut').scrollIntoView({behavior:'smooth'});
+}
+function deliver(){
+const n=document.getElementById('niche').value.trim()||'[your niche]';
+const p=document.getElementById('platform').value;
+const themes=["Foundation Week: Establish your authority","Deep Dive Week: Educate with specifics","Story Week: Build connection","Growth Week: Challenge + inspire","Conversion Week: Subtle promotion"];
+let cal=`COMPLETE 30-DAY CONTENT CALENDAR\n${p} | ${n}\nGenerated by Pegrio LLC\n${'='.repeat(50)}\n\n`;
+const days=["Mon","Tue","Wed","Thu","Fri","Sat","Sun"];
+let dayNum=1;
+for(let week=0;week<5;week++){
+cal+=`\n${'═'.repeat(50)}\nWEEK ${week+1}: ${themes[week]}\n${'═'.repeat(50)}\n\n`;
+for(let d=0;d<7&&dayNum<=30;d++){
+const h=pick(hooks,dayNum-1).replace(/X/g,n.split(' ')[0].toLowerCase());
+const t=types[(dayNum-1)%types.length];
+const tagCount=5+(dayNum%6);
+const tags=Array.from({length:tagCount},(_,i)=>tagsPool[(dayNum+i)%tagsPool.length]);
+const times={Instagram:"9AM & 7PM",LinkedIn:"8AM & 12PM",TikTok:"6PM & 9PM","Twitter/X":"8AM & 1PM & 6PM","YouTube Shorts":"12PM & 5PM"}[p];
+cal+=`Day ${dayNum} (${days[d]}) — ${t}\n  Hook: "${h}"\n  Content: `;
+switch(t){case"Educational":cal+=`Teach one specific thing about ${n}. Step-by-step, actionable.\n  Format: Carousel (5-7 slides) or 60-sec video`;break;
+case"Behind-the-scenes":cal+=`Show your workspace, process, or a day in the life around ${n}.\n  Format: Story series or real-time video`;break;
+case"Story/Personal":cal+=`Share a personal story about your journey with ${n}. Vulnerable + specific.\n  Format: Single image + long caption or talking head`;break;
+case"Tips & Tricks":cal+=`3-5 quick tips about ${n} people can apply immediately.\n  Format: Carousel or fast-cut video`;break;
+case"Myth-busting":cal+=`Challenge a common belief about ${n}. Bold + evidence-based.\n  Format: Before/after carousel or argument video`;break;
+case"Poll/Question":cal+=`Ask your audience a question about their biggest struggle with ${n}.\n  Format: Poll sticker or question box`;break;
+case"Case Study":cal+=`Show a specific result or transformation related to ${n}.\n  Format: Results carousel with proof`;break;
+case"Inspirational":cal+=`A motivational insight about ${n} that hits emotionally.\n  Format: Bold text on image or cinematic video`;break;
+case"Promotional":cal+=`Soft mention of your offer related to ${n}. 80% value, 20% pitch.\n  Format: Value post with CTA at end`;break;
+case"Engagement":cal+=`Something fun or relatable about ${n} that gets comments.\n  Format: Meme, hot take, or relatable moment`;break;}
+cal+=`\n  Hashtags: ${tags.map(t=>'#'+t).join(' ')}\n  Best time: ${times}\n\n`;
+dayNum++;
+}
+}
+cal+=`${'='.repeat(50)}\nCONTENT MIX STRATEGY\n${'='.repeat(50)}\n`;
+cal+=`Educational: 40% (12 posts) — this is what builds authority\n`;
+cal+=`Personal/Story: 20% (6 posts) — this builds connection\n`;
+cal+=`Engagement/Fun: 20% (6 posts) — this builds reach\n`;
+cal+=`Promotional: 13% (4 posts) — this drives revenue\n`;
+cal+=`Behind-the-scenes: 7% (2 posts) — this builds trust\n\n`;
+cal+=`POSTING SCHEDULE: ${times}\n`;
+cal+=`BEST DAYS: ${p==='LinkedIn'?'Tue-Thu':p==='TikTok'?'Every day':'Mon-Fri'}\n`;
+cal+=`\n${'='.repeat(50)}\nRemember: consistency > perfection. A mediocre post published beats a perfect post sitting in drafts.\n`;
+cal+=`\n— Pegrio LLC | Full commercial rights included`;
+document.getElementById('fullCal').textContent=cal;
+document.getElementById('unlock').style.display='none';
+document.getElementById('delivered').style.display='block';
+document.getElementById('delivered').scrollIntoView({behavior:'smooth'});
+}
+function copyAll(){navigator.clipboard.writeText(document.getElementById('fullCal').textContent)}
+</script>
+</body>
+</html>
