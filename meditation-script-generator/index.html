@@ -1,0 +1,348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Meditation Script Generator — AI-Guided Meditation, Sleep &amp; Affirmation Scripts | Pegrio LLC</title>
+<meta name="description" content="Generate a calming guided meditation script instantly. Free for sleep stories, morning affirmations, body scans, and focus. Pick length, voice, and purpose.">
+<meta name="keywords" content="meditation script generator, free meditation script, guided meditation script, sleep story script, affirmation script, meditation writer">
+<style>
+:root{--bg:#0a0b1a;--card:#13152b;--accent:#6366f1;--pink:#ff5ea8;--gold:#fbbf24;--green:#10b981;--calm:#7dd3fc;--text:#e7e9f5;--muted:#8b8fa8;--border:#23254a}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--text);line-height:1.7;font-size:15px}
+body::before{content:'';position:fixed;top:-200px;left:50%;transform:translateX(-50%);width:900px;height:600px;background:radial-gradient(ellipse at center,rgba(125,211,252,.15),transparent 60%);pointer-events:none;z-index:0}
+.wrap{max-width:880px;margin:0 auto;padding:28px 20px 60px;position:relative;z-index:1}
+header{text-align:center;margin-bottom:28px}
+.price-badge{display:inline-block;background:linear-gradient(90deg,var(--calm),var(--accent));color:#fff;font-weight:800;font-size:11px;padding:5px 14px;border-radius:20px;margin-bottom:12px}
+h1{font-size:34px;font-weight:900;background:linear-gradient(90deg,var(--calm),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-bottom:8px;line-height:1.15}
+header p{color:var(--muted);font-size:15px;max-width:580px;margin:0 auto}
+.usage-bar{display:flex;align-items:center;justify-content:center;gap:10px;background:var(--card);border:1px solid var(--border);border-radius:50px;padding:8px 18px;max-width:380px;margin:18px auto 0;font-size:13px}
+.usage-bar .dot{width:8px;height:8px;border-radius:50%;background:var(--green)}
+.usage-bar .num{font-weight:800}
+.usage-bar .of,.usage-bar .label{color:var(--muted)}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:18px}
+label{display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--calm);margin-bottom:8px}
+.field{margin-bottom:20px}
+input[type=text],textarea,select{width:100%;background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:12px 14px;color:var(--text);font-size:15px;font-family:inherit;outline:none;transition:border-color .15s}
+input[type=text]:focus,textarea:focus,select:focus{border-color:var(--calm)}
+textarea{resize:vertical;min-height:70px}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{cursor:pointer;background:var(--bg);border:1px solid var(--border);border-radius:50px;padding:9px 16px;font-size:13px;font-weight:600;color:var(--muted);transition:all .15s;user-select:none}
+.chip:hover{border-color:var(--calm);color:var(--text)}
+.chip.active{background:var(--calm);color:#0a0b1a;border-color:var(--calm)}
+.chip-row-label{font-size:11px;color:var(--muted);margin-bottom:6px;font-weight:700;text-transform:uppercase;letter-spacing:1px}
+.gen-btn{width:100%;background:linear-gradient(90deg,var(--calm),var(--accent));color:#fff;border:none;border-radius:12px;padding:16px;font-size:17px;font-weight:800;cursor:pointer;transition:transform .12s,opacity .12s;margin-top:4px}
+.gen-btn:hover{transform:translateY(-1px);opacity:.95}
+.gen-btn:disabled{opacity:.6;cursor:not-allowed;transform:none}
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid rgba(255,255,255,.3);border-top-color:#fff;border-radius:50%;animation:spin .7s linear infinite;vertical-align:-3px;margin-right:8px}
+@keyframes spin{to{transform:rotate(360deg)}}
+.output{display:none;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px;margin-bottom:18px}
+.output.show{display:block;animation:fadein .4s ease}
+@keyframes fadein{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+.output h3{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--calm);margin-bottom:14px}
+.script-box{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:18px;white-space:pre-wrap;font-size:15px;line-height:1.9;color:var(--text);max-height:480px;overflow-y:auto;font-family:Georgia,'Times New Roman',serif}
+.script-meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
+.meta-pill{background:var(--bg);border:1px solid var(--border);border-radius:50px;padding:5px 12px;font-size:11px;color:var(--muted)}
+.meta-pill b{color:var(--calm)}
+.action-row{display:flex;gap:10px;margin-top:14px;flex-wrap:wrap}
+.act-btn{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:10px 16px;font-size:13px;font-weight:600;color:var(--text);cursor:pointer;transition:all .15s;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.act-btn:hover{border-color:var(--calm)}
+.act-btn.primary{background:linear-gradient(90deg,var(--gold),#f59e0b);color:#0a0b1a;border:none;font-weight:800}
+.act-btn.primary:hover{opacity:.95}
+.upsell{background:linear-gradient(135deg,var(--gold),#f59e0b);border-radius:16px;padding:22px;margin:18px 0;text-align:center}
+.upsell .ubadge{display:inline-block;background:#0a0b1a;color:var(--gold);font-weight:800;font-size:11px;padding:3px 12px;border-radius:20px;margin-bottom:10px}
+.upsell h3{color:#0a0b1a;font-size:20px;margin-bottom:6px;font-weight:900}
+.upsell p{color:#0a0b1a;font-size:14px;margin-bottom:14px;opacity:.85}
+.upsell a{display:inline-block;background:#0a0b1a;color:#fff;font-weight:800;font-size:16px;padding:13px 32px;border-radius:50px;text-decoration:none;transition:transform .12s}
+.upsell a:hover{transform:translateY(-2px)}
+.err{background:#3b1a1a;border:1px solid #7f1d1d;color:#fca5a5;border-radius:10px;padding:14px;font-size:13px}
+.modal-bg{display:none;position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:50;align-items:center;justify-content:center;padding:20px}
+.modal-bg.show{display:flex}
+.modal{background:var(--card);border:1px solid var(--border);border-radius:20px;max-width:440px;width:100%;padding:30px;text-align:center}
+.modal h2{font-size:22px;margin-bottom:8px}
+.modal p{color:var(--muted);font-size:14px;margin-bottom:20px}
+.modal .plan{background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:16px;margin-bottom:16px;text-align:left}
+.modal .plan .price{font-size:28px;font-weight:900;color:var(--calm)}
+.modal .plan .per{color:var(--muted);font-size:13px}
+.modal ul{list-style:none;padding:0;margin:8px 0 0;text-align:left}
+.modal ul li{padding:4px 0;padding-left:22px;position:relative;font-size:13px}
+.modal ul li:before{content:"✓";position:absolute;left:0;color:var(--green);font-weight:800}
+.modal .close-btn{background:var(--bg);border:1px solid var(--border);color:var(--muted);border-radius:10px;padding:10px 18px;font-size:13px;cursor:pointer;margin-top:8px}
+.modal .buy-btn{background:linear-gradient(90deg,var(--calm),var(--accent));color:#fff;border:none;border-radius:10px;padding:12px 24px;font-size:15px;font-weight:800;cursor:pointer;width:100%;margin-top:4px}
+footer{text-align:center;color:var(--muted);font-size:12px;margin-top:36px;padding-top:18px;border-top:1px solid var(--border)}
+footer a{color:var(--calm)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+<header>
+<div class="price-badge">🧘 FREE — 3 SCRIPTS FREE</div>
+<h1>Meditation Script Generator</h1>
+<p>Generate a calming guided meditation, sleep story, or affirmation script in seconds. Pick the purpose, length, and voice — get a ready-to-read script. Then turn it into a real voiceover.</p>
+</header>
+
+<div class="usage-bar" id="usageBar">
+<span class="dot"></span>
+<span><span class="num" id="usedCount">0</span><span class="of"> of </span><span class="num">3</span><span class="label"> free scripts used</span></span>
+</div>
+
+<div class="card">
+<div class="field">
+<label>What is this meditation for?</label>
+<div class="chips" id="purposeChips">
+<div class="chip active" data-v="sleep">🌙 Sleep Story</div>
+<div class="chip" data-v="relax">😌 Deep Relaxation</div>
+<div class="chip" data-v="morning">☀️ Morning Affirmations</div>
+<div class="chip" data-v="focus">📚 Focus / Study</div>
+<div class="chip" data-v="anxiety">🕊️ Anxiety Relief</div>
+<div class="chip" data-v="body">🧘 Body Scan</div>
+<div class="chip" data-v="yoga">🧘‍♀️ Yoga Nidra</div>
+</div>
+</div>
+
+<div class="field">
+<label>Voice style</label>
+<div class="chips" id="voiceChips">
+<div class="chip active" data-v="soft-female">☁️ Soft &amp; Breath (female)</div>
+<div class="chip" data-v="low-slow">🌙 Low &amp; Slow (male)</div>
+<div class="chip" data-v="neutral">📖 Neutral Storyteller</div>
+<div class="chip" data-v="asmr">🎧 ASMR-Adjacent</div>
+</div>
+</div>
+
+<div class="field">
+<label>Length</label>
+<div class="chips" id="lengthChips">
+<div class="chip" data-v="3">⏱️ 3 min</div>
+<div class="chip active" data-v="5">⏱️ 5 min</div>
+<div class="chip" data-v="10">⏱️ 10 min</div>
+<div class="chip" data-v="20">⏱️ 20 min</div>
+</div>
+</div>
+
+<div class="field">
+<label>Theme or focus (optional)</label>
+<input type="text" id="theme" placeholder="e.g. walking through a quiet forest, letting go of work stress, ocean waves...">
+</div>
+
+<button class="gen-btn" id="genBtn" onclick="generate()">✨ Generate Meditation Script</button>
+</div>
+
+<div class="output" id="outputBox">
+<h3>📜 Your Meditation Script</h3>
+<div class="script-box" id="scriptBox"></div>
+<div class="script-meta" id="scriptMeta"></div>
+<div class="action-row">
+<button class="act-btn" onclick="copyScript()">📋 Copy</button>
+<button class="act-btn" onclick="downloadScript()">⬇️ Download .txt</button>
+<a class="act-btn primary" id="voiceoverLink" href="https://www.fiverr.com/pegrio" target="_blank" rel="noopener">🎙️ Turn this into a voiceover →</a>
+</div>
+</div>
+
+<div class="upsell" id="upsellBox" style="display:none">
+<div class="ubadge">🎙️ WANT IT NARRATED?</div>
+<h3>Get this script as a professional voiceover</h3>
+<p>Calming, meditation-paced narration in your chosen voice style. Delivered in 24–48 hours. From $45.</p>
+<a href="https://www.fiverr.com/pegrio" target="_blank" rel="noopener">Order on Fiverr →</a>
+</div>
+
+<div class="modal-bg" id="paywallModal">
+<div class="modal">
+<h2>You've used your 3 free scripts 🧘</h2>
+<p>Unlimited meditation scripts for $5/month. Cancel anytime.</p>
+<div class="plan">
+<div class="price">$5<span class="per">/month — unlimited</span></div>
+<ul>
+<li>Unlimited script generation</li>
+<li>All voice styles &amp; lengths</li>
+<li>Sleep stories, affirmations, body scans</li>
+<li>Export to .txt &amp; copy</li>
+</ul>
+</div>
+<button class="buy-btn" onclick="simPay()">Get Unlimited — $5/month</button>
+<div style="margin-top:10px"><button class="close-btn" onclick="closePaywall()">Maybe later</button></div>
+</div>
+</div>
+
+<footer>
+Pegrio LLC — <a href="../index.html">All tools</a> · <a href="../meditation-voiceover/">Meditation Voiceover Service</a><br>
+Free meditation script generator. © 2026 Pegrio LLC
+</footer>
+
+</div>
+
+<script>
+const API_KEY = '64a3b09c6b274dc29d0696a0d1aeeb3c.lYvJ1Ecga0KH5RZi';
+const STORAGE_COUNT = 'medsg_count';
+const STORAGE_PAID = 'medsg_paid';
+const FREE_LIMIT = 3;
+
+let selectedPurpose = 'sleep';
+let selectedVoice = 'soft-female';
+let selectedLength = '5';
+let lastScript = '';
+
+function attachChips(id, setter){
+  const container = document.getElementById(id);
+  container.querySelectorAll('.chip').forEach(c => {
+    c.addEventListener('click', () => {
+      container.querySelectorAll('.chip').forEach(x => x.classList.remove('active'));
+      c.classList.add('active');
+      setter(c.dataset.v);
+    });
+  });
+}
+attachChips('purposeChips', v => selectedPurpose = v);
+attachChips('voiceChips', v => selectedVoice = v);
+attachChips('lengthChips', v => selectedLength = v);
+
+function getCount(){ return parseInt(localStorage.getItem(STORAGE_COUNT) || '0', 10); }
+function isPaid(){ return localStorage.getItem(STORAGE_PAID) === '1'; }
+function bumpCount(){ localStorage.setItem(STORAGE_COUNT, String(getCount() + 1)); refreshUsage(); }
+function refreshUsage(){ document.getElementById('usedCount').textContent = isPaid() ? '∞' : getCount(); }
+refreshUsage();
+
+const purposeMap = {
+  sleep: { name: 'Sleep Story', instruction: 'a bedtime sleep story that helps the listener drift off. Slow, dreamy, with a gentle narrative. End by fading into rest.' },
+  relax: { name: 'Deep Relaxation', instruction: 'a deep relaxation meditation that releases physical and mental tension. Slow, grounding, with breath cues.' },
+  morning: { name: 'Morning Affirmations', instruction: 'a morning affirmation meditation (5-9 positive statements) that sets a calm, confident intention for the day.' },
+  focus: { name: 'Focus / Study', instruction: 'a focus meditation that clears the mind before deep work or study. Steady, clarifying, minimal narrative.' },
+  anxiety: { name: 'Anxiety Relief', instruction: 'an anxiety-relief meditation that calms a racing mind. Grounding, present-focused, reassuring. Slow pacing.' },
+  body: { name: 'Body Scan', instruction: 'a body scan meditation moving head-to-toes, releasing tension in each area. Methodical and slow.' },
+  yoga: { name: 'Yoga Nidra', instruction: 'a yoga nidra (yogic sleep) script following the traditional rotation of consciousness through body parts and breath awareness.' }
+};
+const voiceMap = {
+  'soft-female': 'soft, gentle female voice — airy, warm, breathy',
+  'low-slow': 'low, deep male voice — warm baritone, near-whisper',
+  'neutral': 'neutral storyteller voice — steady, even, no dramatic peaks',
+  'asmr': 'ASMR-adjacent voice — close-mic, intimate, soft consonants'
+};
+
+async function generate(){
+  if(!isPaid() && getCount() >= FREE_LIMIT){ showPaywall(); return; }
+  const theme = document.getElementById('theme').value.trim();
+  const btn = document.getElementById('genBtn');
+  btn.disabled = true; btn.innerHTML = '<span class="spinner"></span>Generating your script...';
+
+  const p = purposeMap[selectedPurpose];
+  const lengthMin = parseInt(selectedLength, 10);
+  const wordTarget = lengthMin * 95; // ~95 wpm meditation pace
+  const themeLine = theme ? `Theme or setting: ${theme}.` : 'Choose an appropriate, calming theme.';
+  const voiceDesc = voiceMap[selectedVoice];
+
+  const prompt =
+`You are an expert meditation script writer. Write ${p.instruction}
+
+Length: about ${lengthMin} minutes (approximately ${wordTarget} words at meditation pacing of 95 wpm).
+${themeLine}
+Voice style the script is written for: ${voiceDesc}.
+
+Formatting rules:
+- Write the script so a narrator can read it directly.
+- Use [PAUSE 5s] and [PAUSE 10s] markers where silences belong.
+- Use permissive, gentle language ("allow", "invite", "notice") — never commands ("relax now", "you must").
+- Open with a 30-60 second settle (body positioning, breath).
+- For affirmations, each statement on its own line, followed by a pause.
+- No headers, no preamble, no closing remarks — ONLY the readable script.
+
+Output ONLY the meditation script text. No JSON, no markdown headers, no introduction.`;
+
+  try {
+    const result = await callApi(prompt);
+    lastScript = result.trim();
+    renderScript(lastScript, { purpose: p.name, voice: voiceDesc, length: lengthMin, theme });
+    if(!isPaid()){ bumpCount(); }
+    document.getElementById('upsellBox').style.display = 'block';
+  } catch(err){
+    renderError(err);
+  } finally {
+    btn.disabled = false; btn.innerHTML = '✨ Generate Meditation Script';
+  }
+}
+
+async function callApi(prompt){
+  if(!API_KEY || API_KEY === '64a3b09c6b274dc29d0696a0d1aeeb3c.lYvJ1Ecga0KH5RZi'){ throw new Error('NO_API_KEY'); }
+  const response = await fetch('https://open.bigmodel.cn/api/coding/paas/v4/chat/completions', {
+    method: 'POST',
+    headers: { 'Authorization': 'Bearer ' + API_KEY, 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      model: 'glm-4.6',
+      messages: [{ role: 'user', content: prompt }],
+      max_tokens: 2500,
+      temperature: 0.85
+    })
+  });
+  if(!response.ok){
+    let detail = '';
+    try { detail = (await response.json()).error?.message || ''; } catch(e){}
+    throw new Error('API_ERROR:' + response.status + (detail ? (': ' + detail) : ''));
+  }
+  const data = await response.json();
+  const msg = data.choices[0].message;
+  let content = (msg.content || '').trim();
+  // Reasoning model may put answer in reasoning_content if max_tokens too low
+  if(!content && msg.reasoning_content){
+    content = msg.reasoning_content.trim();
+  }
+  if(!content) throw new Error('EMPTY_RESPONSE');
+  return content;
+}
+
+function renderScript(text, meta){
+  document.getElementById('scriptBox').textContent = text;
+  const metaEl = document.getElementById('scriptMeta');
+  const themePill = meta.theme ? `<span class="meta-pill">Theme: <b>${escapeHtml(meta.theme)}</b></span>` : '';
+  metaEl.innerHTML =
+    `<span class="meta-pill">Purpose: <b>${meta.purpose}</b></span>` +
+    `<span class="meta-pill">Voice: <b>${escapeHtml(meta.voice.split(' — ')[0])}</b></span>` +
+    `<span class="meta-pill">Length: <b>${meta.length} min</b></span>` +
+    `<span class="meta-pill">Words: <b>${text.split(/\s+/).length}</b></span>` +
+    themePill;
+  document.getElementById('outputBox').classList.add('show');
+  document.getElementById('outputBox').scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+function renderError(err){
+  const box = document.getElementById('outputBox');
+  const msg = String(err.message || err);
+  let body = 'Something went wrong. Please try again.';
+  if(msg === 'NO_API_KEY'){
+    body = 'This tool needs a z.ai API key to generate scripts. The placeholder has not been replaced at deploy.';
+  } else if(msg.startsWith('API_ERROR')){
+    body = 'The AI service returned an error: ' + escapeHtml(msg) + '. Please try again in a moment.';
+  }
+  box.querySelector('h3').insertAdjacentHTML('afterend', `<div class="err">${body}</div>`);
+  box.classList.add('show');
+}
+
+function copyScript(){
+  navigator.clipboard.writeText(lastScript).then(() => {
+    const btn = event.target; const orig = btn.innerHTML;
+    btn.innerHTML = '✓ Copied!';
+    setTimeout(() => { btn.innerHTML = orig; }, 1400);
+  });
+}
+
+function downloadScript(){
+  const blob = new Blob([lastScript], { type: 'text/plain' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = 'meditation-script.txt';
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+function showPaywall(){ document.getElementById('paywallModal').classList.add('show'); }
+function closePaywall(){ document.getElementById('paywallModal').classList.remove('show'); }
+function simPay(){
+  localStorage.setItem(STORAGE_PAID, '1');
+  closePaywall();
+  refreshUsage();
+  generate();
+}
+
+function escapeHtml(s){ const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+</script>
+</body>
+</html>
